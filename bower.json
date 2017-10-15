@@ -1,0 +1,16 @@
+{
+    "name" : "high-end-class-system",
+    "homepage" : "https://github.com/ahuszko/class-system",
+    "authors" : [
+        "Attila Huszko <attila.huszko@high-end.hu>"
+    ],
+    "description" : "A simple class system inspired by Sencha Ext JS",
+    "main" : "high-end.js",
+    "license" : "MIT",
+    "private" : true,
+    "ignore" : [
+        "**/.*",
+        "packages",
+        "test"
+    ]
+}
