@@ -27,7 +27,7 @@
 
     HighEnd.apply(HighEnd, {
         app: function (config) {
-            $(config.launch);
+            $(config.launch.bind(config);
         },
         Base: HighEnd.Base || {},
         Array: HighEnd.Array || {},
