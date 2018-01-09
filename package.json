@@ -1,8 +1,8 @@
 {
-    "name" : "high-end-class-system",
-    "version" : "1.0.0",
+    "name" : "class-system",
+    "version" : "1.0.4",
     "description" : "A simple class system inspired by Sencha Ext JS",
-    "main" : "high-end.js",
+    "main" : "index.js",
     "repository" : {
         "type" : "git",
         "url" : "git+https://github.com/ahuszko/class-system.git"
