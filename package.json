@@ -1,0 +1,17 @@
+{
+    "name" : "high-end-class-system",
+    "version" : "1.0.0",
+    "description" : "A simple class system inspired by Sencha Ext JS",
+    "main" : "high-end.js",
+    "repository" : {
+        "type" : "git",
+        "url" : "git+https://github.com/ahuszko/class-system.git"
+    },
+    "author" : "Attila Huszko <attila.huszko@high-end.hu>",
+    "license" : "MIT",
+    "private" : true,
+    "bugs" : {
+        "url" : "https://github.com/ahuszko/class-system/issues"
+    },
+    "homepage" : "https://github.com/ahuszko/class-system"
+}

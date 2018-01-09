@@ -1,7 +1,7 @@
-(function (HighEnd) {
+(function (global, HighEnd) {
     var ClassManager;
 
-    window.HighEnd = HighEnd;
+    global.HighEnd = HighEnd;
 
     /**
      * @param {Object} object Destination object.
@@ -26,8 +26,24 @@
     };
 
     HighEnd.apply(HighEnd, {
+
+        /**
+         * @param {function} callback
+         */
+        onReady: function (callback) {
+            if (document.readyState === 'complete') {
+                callback();
+            } else {
+                document.addEventListener('DOMContentLoaded', callback);
+            }
+        },
+
+        /**
+         * @param {object} config
+         * @param {function} config.launch
+         */
         app: function (config) {
-            $(config.launch.bind(config));
+            HighEnd.onReady(config.launch.bind(config));
         },
         Base: HighEnd.Base || {},
         Array: HighEnd.Array || {},
@@ -51,7 +67,7 @@
         },
         destroy: function () {
             ClassManager.destroy();
-            delete window.HighEnd;
+            delete global.HighEnd;
         },
         destroyInstance: function (instance) {
             if (instance instanceof HighEnd.BaseClass) {
@@ -116,7 +132,7 @@
          * Safe method to log what is doing nothing when console not supported.
          */
         log: function () {
-            var context = window.console;
+            var context = global.console;
 
             if (context) {
                 context.log.apply(context, arguments);
@@ -195,7 +211,7 @@
             var me    = this,
                 type  = me.type(item),
                 clone = {},
-                json  = window.JSON,
+                json  = global.JSON,
                 length, property;
 
             if (item === null || item === undefined) {
@@ -302,7 +318,7 @@
          * @return {object}
          **/
         ns: function (name, value) {
-            var ns    = window,
+            var ns    = global,
                 parts = name.split('.'),
                 i     = 0,
                 last  = parts.length - 1,
@@ -317,7 +333,7 @@
             return ns[leaf] = value;
         },
         removeNs: function (name) {
-            var ns    = window,
+            var ns    = global,
                 parts = name.split('.'),
                 i     = 0,
                 last  = parts.length - 1,
@@ -417,9 +433,9 @@
                 var args    = Array.prototype.slice.call(arguments),
                     context = context || this;
 
-                window.clearTimeout(timer);
+                global.clearTimeout(timer);
 
-                timer = window.setTimeout(function () {
+                timer = global.setTimeout(function () {
                     fn.apply(context, args);
                 }, wait);
             };
@@ -590,7 +606,7 @@
                 // remove all others
                 for (name in namespaces) {
                     if (namespaces.hasOwnProperty(name)) {
-                        delete window[name];
+                        delete global[name];
                     }
                 }
             },
@@ -800,4 +816,4 @@
             return caller.memberOf.superclass[caller.methodName].apply(this, arguments);
         }
     });
-})({});
+})(window, {});
